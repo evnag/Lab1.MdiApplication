@@ -5,7 +5,11 @@ namespace Lab1.MdiApplication
         public ParentForm()
         {
             InitializeComponent();
-        }
+            // —войству Text панели spData устанавливаетс€ текуща€ дата
+            spData.Text =
+            Convert.ToString(System.DateTime.Today.ToLongDateString());
+        
+    }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -62,6 +66,16 @@ namespace Lab1.MdiApplication
                     (System.Windows.Forms.MdiLayout.TileHorizontal);
                     break;
             }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            spWin.Text = "Windows is cascade";
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            spWin.Text = "Windows is horizontal";
         }
     }
 }
