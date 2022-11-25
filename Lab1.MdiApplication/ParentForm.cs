@@ -5,7 +5,11 @@ namespace Lab1.MdiApplication
         public ParentForm()
         {
             InitializeComponent();
-        }
+            // —войству Text панели spData устанавливаетс€ текуща€ дата
+            spData.Text =
+            Convert.ToString(System.DateTime.Today.ToLongDateString());
+        
+    }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -41,6 +45,37 @@ namespace Lab1.MdiApplication
         {
             Form elipseForm = new ElipseForm();
             elipseForm.ShowDialog();
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Tag.ToString())
+            {
+                case "NewDoc":
+                    ChildForm newChild = new ChildForm();
+                    newChild.MdiParent = this;
+                    newChild.Show();
+                    newChild.Text = newChild.Text + " " +
+                   ++openDocuments;
+                    break;
+                case "Cascade":
+                    this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
+                    break;
+                case "Title":
+                    this.LayoutMdi
+                    (System.Windows.Forms.MdiLayout.TileHorizontal);
+                    break;
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            spWin.Text = "Windows is cascade";
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            spWin.Text = "Windows is horizontal";
         }
     }
 }
